@@ -3,7 +3,7 @@ Intall the requied Python packages, redis is added in the list
 ```
 pip3 install -r requirements.txt
 ```
-Go to `/webserver`, run the two flask servers:
+Go to `/webserver`, start your Redis server and run the two flask servers:
 
 1. Run server that for writing data to the redis server
 ```
