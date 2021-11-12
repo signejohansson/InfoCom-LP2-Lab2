@@ -1,19 +1,28 @@
-# LP2 Drone Project - Lab 1
-Intall the requied Python packages
+# LP2 Drone Project - Lab 2
+Intall the requied Python packages, redis is added in the list
 ```
 pip3 install -r requirements.txt
 ```
-Go to `/webserver`, run the flask server:
+Go to `/webserver`, run the two flask servers:
+
+1. Run server that for writing data to the redis server
+```
+export FLASK_APP=database.py
+export FLASK_ENV=development
+flask run --port=5001
+```
+2. Open a new terminal, and run build.py
 ```
 export FLASK_APP=build.py
 export FLASK_ENV=development
 flask run
 ```
+
 Go to `/pi`, run the Pi controller:
 ```
 python3 pi_controller.py
 ```
-In the terminal running `pi_controller.py`, use arrow keys or 'wasd' to move the 'drone' on the website. 
+You need to replace `pi_controller.py` with the one you created in Part 1, but keey `SERVER_URL` the same as in the file provied in this lab.
 
 Note: Don't user `python3 build.py` to run the webserver, since this does not porvide all the functionalities requied by the application.
 

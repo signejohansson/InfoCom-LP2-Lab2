@@ -4,6 +4,7 @@ import random
 import click
 
 
+# Replace with your own function in Part 1
 def get_direction():
     d_long = 0
     d_la = 0
@@ -38,7 +39,7 @@ def get_direction():
 
 
 if __name__ == "__main__":
-    SERVER_URL = "http://127.0.0.1:5000/drone"
+    SERVER_URL = "http://127.0.0.1:5001/drone"
     while True:
         d_long, d_la, send_vel = get_direction()
         if send_vel:

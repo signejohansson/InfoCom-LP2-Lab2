@@ -2,14 +2,17 @@ from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 import time
+import redis
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 socket = SocketIO(app, cors_allowed_origins="*")
 
-longitude = 13.21008
-latitude = 55.71106
+# change this to connect to your redis server
+# ===============================================
+redis_server = redis.Redis("YOUR_SERVER")
+# ===============================================
 
 # Translate OSM coordinate (longitude, latitude) to SVG coordinates (x,y).
 # Input coords_osm is a tuple (longitude, latitude).
@@ -30,20 +33,6 @@ def translate(coords_osm):
 
     return x_svg, y_svg
 
-def moveDrone(movement):
-    global longitude
-    global latitude
-    d_long = movement['longitude']
-    d_la = movement['latitude']
-    longitude += d_long/10000
-    latitude += d_la/10000
-
-@app.route('/drone', methods=['POST'])
-def drone():
-    movement = request.get_json()
-    moveDrone(movement)
-    return 'Get data'
-
 @app.route('/', methods=['GET'])
 def map():
     return render_template('index.html')
@@ -51,6 +40,11 @@ def map():
 @socket.on('get_location')
 def get_location():
     while True:
+        #get your longitude and latitude from the Redis server
+        # ====================================================
+        longitude = None
+        latitude = None
+        # ====================================================
         x_svg, y_svg = translate((longitude, latitude))
         emit('get_location', (x_svg, y_svg))
         time.sleep(0.01)
