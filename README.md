@@ -11,7 +11,7 @@ export FLASK_APP=database.py
 export FLASK_ENV=development
 flask run --port=5001
 ```
-2. Open a new terminal, and run build.py
+2. Open a new terminal, and run `build.py`
 ```
 export FLASK_APP=build.py
 export FLASK_ENV=development
@@ -22,7 +22,7 @@ Go to `/pi`, run the Pi controller:
 ```
 python3 pi_controller.py
 ```
-You need to replace `pi_controller.py` with the one you created in Part 1, but keey `SERVER_URL` the same as in the file provied in this lab.
+You can replace `pi_controller.py` with the one you created in Part 1, but keep `SERVER_URL` the same as in the file provied in this lab.
 
 Note: Don't user `python3 build.py` to run the webserver, since this does not porvide all the functionalities requied by the application.
 
