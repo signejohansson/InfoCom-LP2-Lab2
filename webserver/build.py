@@ -9,7 +9,7 @@ CORS(app, supports_credentials=True)
 app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 socket = SocketIO(app, cors_allowed_origins="*")
 
-# change this to connect to your redis server
+# change this so rhat you can connect to your redis server
 # ===============================================
 redis_server = redis.Redis("YOUR_SERVER")
 # ===============================================
