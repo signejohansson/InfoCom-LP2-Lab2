@@ -1,0 +1,30 @@
+Frågor labb 2
+
+Fråga 1: 
+
+Drone controller: pi_controller
+
+Database frontend: database.py
+
+Website frontend: build.py
+
+Web client: index.html
+
+Fråga 2:
+
+build.py tillhör port 5000
+database.py tillhör port 5001
+
+URL är http://127.0.0.1:5000 och
+http://127.0.0.1:5001
+
+Fråga 3:
+
+Drone controller: skickar data till database.py
+
+Database frontend: skickar post request till redis server, skickar data dit
+
+Website frontend: skickar get request till redis server, hämtar data
+
+Web client: visar upp datan på hemsidan
+
