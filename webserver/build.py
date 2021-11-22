@@ -4,6 +4,9 @@ from flask_cors import CORS
 import time
 import redis
 
+from sense_hat import SenseHat
+sense = SenseHat()
+
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
@@ -11,7 +14,7 @@ socket = SocketIO(app, cors_allowed_origins="*")
 
 # change this so rhat you can connect to your redis server
 # ===============================================
-redis_server = redis.Redis("YOUR_SERVER")
+redis_server = redis.Redis('localhost', port = 6379)
 # ===============================================
 
 # Translate OSM coordinate (longitude, latitude) to SVG coordinates (x,y).
@@ -42,8 +45,8 @@ def get_location():
     while True:
         #get your longitude and latitude from the Redis server
         # ====================================================
-        longitude = None
-        latitude = None
+        longitude = redis_server.get('longitude')
+        latitude = redis_server.get('latitude')
         # ====================================================
         x_svg, y_svg = translate((longitude, latitude))
         emit('get_location', (x_svg, y_svg))
