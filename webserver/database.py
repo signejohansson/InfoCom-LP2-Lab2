@@ -11,7 +11,7 @@ app.secret_key = 'dljsaklqk24e21cjn!Ew@@dsa5'
 
 # change this to connect to your redis server
 # ===============================================
-redis_server = redis.Redis('localhost', port = 6379)
+redis_server = redis.Redis(host = 'localhost', port = 6379)
 # ===============================================
 
 redis_server.set('longitude', 13.21008)
