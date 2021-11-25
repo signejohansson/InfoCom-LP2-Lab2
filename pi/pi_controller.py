@@ -15,7 +15,7 @@ def get_direction():
         for event in sense.stick.get_events():
             print(event.direction, event.action)
 
-            if event.action == "pressed":
+            if event.action == "pressed": #Ta bort denna
                 
                 if event.direction == "up":
                     send_vel = True
